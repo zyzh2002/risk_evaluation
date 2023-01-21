@@ -51,7 +51,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 PS C:\Users\zyzh0>
 ~~~
-这会在当前用户的`.ssh`目录下创建`id_rsa`和`id_rsa.pub`文件。扩展名为`.pub`的为公钥(pubkey)。该密钥对使用了非对称加密算法中的一种（RSA），其简单原理便是利用质因数分解（将质数相乘得到一个数很容易，反之要得到具体的质数却十分困难），使用公钥加密的数据只能用私钥进行解密。我们可以查看他们。
+这会在当前用户的`.ssh`目录下创建`id_rsa`和`id_rsa.pub`文件。扩展名为`.pub`的为公钥(pubkey)。该密钥对使用了非对称加密算法中的一种（[RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))），其简单原理便是利用质因数分解（将质数相乘得到一个数很容易，反之要得到具体的质数却十分困难），使用公钥加密的数据只能用私钥进行解密。我们可以查看他们。
 ~~~cmd
 PS C:\Users\zyzh0> cat C:\Users\zyzh0/.ssh/id_rsa
 -----BEGIN OPENSSH PRIVATE KEY-----
