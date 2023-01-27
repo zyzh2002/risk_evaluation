@@ -23,6 +23,7 @@ $\LaTeX$论文目录
 
 * [命令行教程](tutorials/cmd.md) <br>
 * [GitHub使用教程](tutorials/github.md) <br>
+* [OpenSSH](tutorials/openssh.md)<br>
 
 ***
 ## 数据来源
