@@ -23,6 +23,8 @@ alice@A's password: # password here
 
 alice@B:~$
 ~~~
+> **密码验证的缺点**\
+密码验证可以被暴力破解，因此是不安全的。在生产环境中，一般推荐使用*公钥验证*。
 
 ## SSH公钥验证
 为了更好的理解这种验证方式，我们需要一些密码学基础知识。
@@ -51,3 +53,44 @@ alice@B:~$
     这种加密通常是单向的，只有Alice向Bob发送的信息才能被保护。\
     在实际使用中，通常Alice会向Bob加密发送对称加密的密钥，这样Bob就能安全的收到密钥，发起对称加密连接。这一过程被叫做**密钥交换(key exchange)**。密钥交换被广泛应用于我们的生活中，比如访问网站时的`https`协议便是基于`TLS(Transport Layer Security)`的`http`协议，而`TLS`协议在握手时便会进行密钥交换以建立安全信道。
 
+    常见的非对称加密算法有RSA、ECDSA、ECDH等。
+
+### 公钥验证方法
+* 验证过程
+
+    假设A计算机要连接到B计算机，在A、B计算机中分别存放了相配对的私钥和公钥。B计算机验证A计算机的身份时，可以采取以下步骤：
+    * B生成一串随机数，使用公钥加密，发送给A。
+    * A使用本地存储的私钥对密文进行解密，之后将解密得到的随机数发送给B。
+    * B验证随机数是否相同，进而验证密钥对是否有效。
+
+* 配置验证
+
+    首先使用`ssh-keygen`命令生成密钥对。该命令通常已包含在ssh套件中。
+    ~~~
+    PS C:\Users\zyzh0> ssh-keygen
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (C:\Users\zyzh0/.ssh/id_rsa): # Enter
+    Enter passphrase (empty for no passphrase): # Enter
+    Enter same passphrase again: # Enter
+    Your identification has been saved in C:\Users\zyzh0/.ssh/id_rsa.
+    Your public key has been saved in C:\Users\zyzh0/.ssh/id_rsa.pub.
+    The key fingerprint is:
+    SHA256:0Tka0Cgh32YWiLPynzDzoTdqa89ZoaUpTN2QGb2uOQ4 zyzh0@SHELL-DESKTOP-H
+    The key's randomart image is:
+    +---[RSA 3072]----+
+    |  ..o+oo         |
+    |  ooo=oo.. .     |
+    |   o=.=.o +      |
+    |. .. *.  + .     |
+    | o. ..+ S        |
+    | o= .=..         |
+    |  EB+=.          |
+    |  ++Xo           |
+    | oo*=o           |
+    +----[SHA256]-----+
+    PS C:\Users\zyzh0>
+    ~~~
+    这会在`~/.ssh`目录下创建`id_rsa`和`id_rsa.pub`文件。扩展名为`.pub`的为公钥(pubkey)。
+    > "`~`"代表当前用户的主目录。
+
+    将`id_rsa`复制到Alice的`~/.ssh`目录下，将`id_rsa.pub`文件的内容追加到B计算机上Bob为Alice创建的对应用户的`~/.ssh/authorized_keys`文件中即可实现公钥验证。
