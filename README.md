@@ -1,7 +1,6 @@
 # 华北平原水旱风险评估
 这是该科创项目的资源以及论文仓库。以下是该仓库的目录结构说明。
 
-
 ## 目录结构
 * `./scripts`<br>
 程序脚本
@@ -26,14 +25,19 @@ $\LaTeX$论文目录
 * [OpenSSH](tutorials/openssh.md)<br>
 
 ***
+## 环境要求
+* `python>=3.9`
+* `pip`
+* `Ubuntu` 或 `Ubuntu on WSL`
+* 如果使用`Windows`环境，建议安装`make`，`unzip`等工具。
+
+
+***
 ## 数据来源
 项目的主要数据均上传至腾讯云cos存储桶。预期数据时间跨度为2000-2015年。
 
 
 >项目的数据仍处于收集中，***资源不全***。
-
-
-
 
 ### 数据列表
 * [x] [DEM（90m）][a] 来自[地理空间数据云][1]
@@ -58,11 +62,11 @@ $\LaTeX$论文目录
 [8]:<https://zenodo.org/record/4417810#.ZAXdchVBxD8>
 
 [a]:<https://riskevaluate.zyzh20021020.cn/DEM-90/DEM-90.zip>
-[b]:<https://riskevaluate.zyzh20021020.cn/PRECIP/中国陆地1948-2016年降水量数据集.csv>
+[b]:<https://riskevaluate.zyzh20021020.cn/PRECIP/cn_precip.csv>
 [c]:<https://riskevaluate.zyzh20021020.cn/TEMP/TEMP.zip>
 [d]:<https://riskevaluate.zyzh20021020.cn/POPULAR/chn_pd_2000_1km_ASCII_XYZ.zip>
 [e]:<https://riskevaluate.zyzh20021020.cn/WIND/GGWS-PCNN-wind_speed-197301202112_v330202202p.nc>
 [f]:<https://riskevaluate.zyzh20021020.cn/RIVER/river.zip>
-[g]:<https://riskevaluate.zyzh20021020.cn/BOARDER/2022%E5%B9%B4%E7%9C%81%E7%95%8C.rar>
+[g]:<https://riskevaluate.zyzh20021020.cn/BOARDER/border_2022.rar>
 [h]:<https://riskevaluate.zyzh20021020.cn/GDP/GDP.zip>
 [I]:<https://riskevaluate.zyzh20021020.cn/CLCD/CLCD.zip>

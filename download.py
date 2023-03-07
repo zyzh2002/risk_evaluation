@@ -2,7 +2,7 @@ import urllib.request
 import os
 
 
-def download_file_with_proxy(url, file_path, proxy):
+def download_file_with_proxy(url, file_path, proxy=None):
     """
     使用代理服务器下载文件
     :param url: 下载文件的URL
@@ -46,8 +46,11 @@ def download_file(url, file_path):
     """
     urllib.request.urlretrieve(url, file_path)
 
-for i in range(2004,2016):
-    url = "https://zenodo.org/record/4417810/files/CLCD_v01_"+str(i)+".tif?download=1"
-    file_path = "./down/CLCD_v01_"+str(i)+".tif"
-    download_file_with_proxy(url, file_path, proxy)
+for i in range(2002,2016):
+    url = "https://data.worldpop.org/GIS/Population_Density/Global_2000_2020_1km/"+str(i)+"/CHN/chn_pd_" + \
+        str(i) + "_1km_ASCII_XYZ.zip"
+    file_path = "down/chn_pd_20" + str(i) + "_1km_ASCII_XYZ.zip"
+
+    print(url)
+#    download_file_with_proxy(url, file_path, proxy)
 #    download_file(url, file_path)
