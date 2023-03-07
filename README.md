@@ -31,6 +31,7 @@ $\LaTeX$论文目录
 * `Ubuntu` 或 `Ubuntu on WSL`
 * 如果使用`Windows`环境，建议安装`make`，`unzip`等工具。
 
+使用`scripts` 中的`Makefile`来构建计算环境。
 
 ***
 ## 数据来源
