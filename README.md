@@ -65,7 +65,7 @@ $\LaTeX$论文目录
 [a]:<https://riskevaluate.zyzh20021020.cn/DEM-90/DEM-90.zip>
 [b]:<https://riskevaluate.zyzh20021020.cn/PRECIP/cn_precip.csv>
 [c]:<https://riskevaluate.zyzh20021020.cn/TEMP/TEMP.zip>
-[d]:<https://riskevaluate.zyzh20021020.cn/POPULAR/chn_pd_2000_1km_ASCII_XYZ.zip>
+[d]:<https://riskevaluate.zyzh20021020.cn/POPULAR/POPU.zip>
 [e]:<https://riskevaluate.zyzh20021020.cn/WIND/GGWS-PCNN-wind_speed-197301202112_v330202202p.nc>
 [f]:<https://riskevaluate.zyzh20021020.cn/RIVER/river.zip>
 [g]:<https://riskevaluate.zyzh20021020.cn/BOARDER/border_2022.rar>
