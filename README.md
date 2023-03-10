@@ -44,8 +44,15 @@ $\LaTeX$论文目录
 * [x] [DEM（90m）][a] 来自[地理空间数据云][1]
 * [x] [降雨量][b] 来自[中国科学院资源环境科学与数据中心][2]，数据结构[如此][3]
 * [x] [温度][c] 来自[zenodo.org][8]
+
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5111989.svg)](https://doi.org/10.5281/zenodo.5111989)
+
 * [x] [风速][e] 来自[国家青藏高原科学数据中心][5]
 * [x] [土地利用][I] 来自[30 m annual land cover and its dynamics in China from 1990 to 2019][8]
+
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4417810.svg)](https://doi.org/10.5281/zenodo.4417810)
+
+
 * [x] [省级行政区边界][g] 来自来自[中国科学院资源环境科学与数据中心][2]
 * [x] [人口密度][d] 来自[worldpop.org][4]
 * [x] [GDP密度][h] 来自[全球变化科学研究数据出版系统][7]
@@ -53,7 +60,8 @@ $\LaTeX$论文目录
 * [ ] 洪水频率
 
 
-[1]:<https://www.gscloud.cn/>
+[1]:<https://www.gscloud.cn/sources/accessdata/305?pid=302>
+[2]:<https://www.resdc.cn/DOI/DOI.aspx?DOIID=122>
 [3]:<https://www.resdc.cn/DOI/DOI.aspx?DOIID=103>
 [4]:<https://hub.worldpop.org/geodata/listing?id=76>
 [5]:<https://data.tpdc.ac.cn/zh-hans/data/c3a67628-bb4d-4fb3-9bb2-0a2b88bdb6fe>
