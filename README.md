@@ -32,6 +32,10 @@ $\LaTeX$论文目录
 
 使用`scripts` 中的`Makefile`来构建计算环境。
 
+如果要在`Windows`下配置`make`，推荐使用`winget`工具：
+* 执行`winget install GnuWin32.Make`
+* 之后将`C:\Program Files (x86)\GnuWin32\bin`添加至`Path`
+
 ***
 ## 数据来源
 项目的主要数据均上传至腾讯云cos存储桶。预期数据时间跨度为2000-2015年。
