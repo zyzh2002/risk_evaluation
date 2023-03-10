@@ -1,5 +1,10 @@
 all:
-	pass
+	installReq
+	downloadRes
+	unzipRes
+
+installReq:
+	pip3 install -r requirements.txt
 
 downloadRes:
 	python3 ./scripts/downloadFile.py
@@ -7,7 +12,7 @@ downloadRes:
 unzipRes:
 	python3 ./scripts/unzipFile.py
 
-clean:
+cleanAll:
 	rm -rf ./datas/*
 	rm -rf ./outputs/*
 
