@@ -46,11 +46,15 @@ def download_file(url, file_path):
     """
     urllib.request.urlretrieve(url, file_path)
 
-for i in range(2002,2016):
-    url = "https://data.worldpop.org/GIS/Population_Density/Global_2000_2020_1km/"+str(i)+"/CHN/chn_pd_" + \
-        str(i) + "_1km_ASCII_XYZ.zip"
-    file_path = "down/chn_pd_20" + str(i) + "_1km_ASCII_XYZ.zip"
+exeCmd=""
 
-    print(url)
+for i in range(2000,2016):
+    for j in range(1,13):
+        url = "https://zenodo.org/record/5111989/files/Temp_pred_%d_%d_Tmean.zip?download=1" % (i,j)
+#        exeCmd += "./fdm.exe " + url + "\n"
+        print(url)
+
+#print(exeCmd)
 #    download_file_with_proxy(url, file_path, proxy)
 #    download_file(url, file_path)
+

@@ -43,7 +43,7 @@ $\LaTeX$论文目录
 ### 数据列表
 * [x] [DEM（90m）][a] 来自[地理空间数据云][1]
 * [x] [降雨量][b] 来自[中国科学院资源环境科学与数据中心][2]，数据结构[如此][3]
-* [x] [温度][c] 来自[中国科学院资源环境科学与数据中心][2]
+* [x] [温度][c] 来自[zenodo.org][8]
 * [x] [风速][e] 来自[国家青藏高原科学数据中心][5]
 * [x] [土地利用][I] 来自[30 m annual land cover and its dynamics in China from 1990 to 2019][8]
 * [x] [省级行政区边界][g] 来自来自[中国科学院资源环境科学与数据中心][2]
@@ -54,7 +54,6 @@ $\LaTeX$论文目录
 
 
 [1]:<https://www.gscloud.cn/>
-[2]:<https://www.resdc.cn/>
 [3]:<https://www.resdc.cn/DOI/DOI.aspx?DOIID=103>
 [4]:<https://hub.worldpop.org/geodata/listing?id=76>
 [5]:<https://data.tpdc.ac.cn/zh-hans/data/c3a67628-bb4d-4fb3-9bb2-0a2b88bdb6fe>
@@ -68,6 +67,6 @@ $\LaTeX$论文目录
 [d]:<https://riskevaluate.zyzh20021020.cn/POPULAR/POPU.zip>
 [e]:<https://riskevaluate.zyzh20021020.cn/WIND/GGWS-PCNN-wind_speed-197301202112_v330202202p.nc>
 [f]:<https://riskevaluate.zyzh20021020.cn/RIVER/river.zip>
-[g]:<https://riskevaluate.zyzh20021020.cn/BOARDER/border_2022.rar>
+[g]:<https://riskevaluate.zyzh20021020.cn/BOARDER/border_2022.zip>
 [h]:<https://riskevaluate.zyzh20021020.cn/GDP/GDP.zip>
 [I]:<https://riskevaluate.zyzh20021020.cn/CLCD/CLCD.zip>
