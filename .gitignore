@@ -1,5 +1,5 @@
 scripts/datas/*
-
+scripts/outputs/*
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

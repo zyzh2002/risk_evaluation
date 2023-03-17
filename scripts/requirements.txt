@@ -1,4 +1,15 @@
-re
 requests
-zipfile
 tqdm
+geopandas
+pyproj
+shapely
+xarray
+rioxarray
+rasterio
+numpy
+pandas
+scipy
+matplotlib
+sympy
+folium
+mapclassify
