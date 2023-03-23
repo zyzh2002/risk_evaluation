@@ -45,7 +45,7 @@ $\LaTeX$论文目录
 
 ### 数据列表
 * [x] [DEM（90m）][a] 来自[地理空间数据云][1]
-* [x] [降雨量][b] 来自[中国科学院资源环境科学与数据中心][3]
+* [x] [降雨量][b] 来自[国家青藏高原科学数据中心][3]
 * [x] [温度][c] 来自[zenodo.org][8]
 
     [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5111989.svg)](https://doi.org/10.5281/zenodo.5111989)
@@ -65,7 +65,7 @@ $\LaTeX$论文目录
 
 [1]:<https://www.gscloud.cn/sources/accessdata/305?pid=302>
 [2]:<https://www.resdc.cn/DOI/DOI.aspx?DOIID=122>
-[3]:<https://www.resdc.cn/DOI/DOI.aspx?DOIID=103>
+[3]:<https://data.tpdc.ac.cn/zh-hans/data/faae7605-a0f2-4d18-b28f-5cee413766a2>
 [4]:<https://hub.worldpop.org/geodata/listing?id=76>
 [5]:<https://data.tpdc.ac.cn/zh-hans/data/c3a67628-bb4d-4fb3-9bb2-0a2b88bdb6fe>
 [6]:<https://www.webmap.cn/commres.do?method=result100W>
