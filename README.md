@@ -73,7 +73,7 @@ $\LaTeX$论文目录
 [8]:<https://zenodo.org/record/4417810#.ZAXdchVBxD8>
 
 [a]:<https://riskevaluate.zyzh20021020.cn/DEM-90/DEM-90.zip>
-[b]:<https://riskevaluate.zyzh20021020.cn/PRECIP/cn_precip.csv>
+[b]:<https://riskevaluate.zyzh20021020.cn/PRECIP/PRECIP.zip>
 [c]:<https://riskevaluate.zyzh20021020.cn/TEMP/TEMP.zip>
 [d]:<https://riskevaluate.zyzh20021020.cn/POPULAR/POPU.zip>
 [e]:<https://riskevaluate.zyzh20021020.cn/WIND/GGWS-PCNN-wind_speed-197301202112_v330202202p.nc>
