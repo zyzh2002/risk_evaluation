@@ -46,6 +46,7 @@ $\LaTeX$论文目录
 ### 数据列表
 * [x] [DEM（90m）][a] 来自[地理空间数据云][1]
 * [x] [降雨量][b] 来自[国家青藏高原科学数据中心][3]
+* [x] [PET][j] 来自[NASA MODIS16A2][9]
 * [x] [温度][c] 来自[zenodo.org][8]
 
     [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5111989.svg)](https://doi.org/10.5281/zenodo.5111989)
@@ -71,6 +72,7 @@ $\LaTeX$论文目录
 [6]:<https://www.webmap.cn/commres.do?method=result100W>
 [7]:<https://www.geodoi.ac.cn/WebCn/doi.aspx?Id=125>
 [8]:<https://zenodo.org/record/4417810#.ZAXdchVBxD8>
+[9]:<https://lpdaac.usgs.gov/products/mod16a2v006/>
 
 [a]:<https://riskevaluate.zyzh20021020.cn/DEM-90/DEM-90.zip>
 [b]:<https://riskevaluate.zyzh20021020.cn/PRECIP/PRECIP.zip>
@@ -81,3 +83,4 @@ $\LaTeX$论文目录
 [g]:<https://riskevaluate.zyzh20021020.cn/BOARDER/border_2022.zip>
 [h]:<https://riskevaluate.zyzh20021020.cn/GDP/GDP.zip>
 [I]:<https://riskevaluate.zyzh20021020.cn/CLCD/CLCD.zip>
+[j]:<https://riskevaluate.zyzh20021020.cn/MODIS/MODIS16A2GF.zip>
