@@ -49,19 +49,13 @@ $\LaTeX$论文目录
 * [x] [PET][j] 来自[NASA MODIS16A2][9]
 * [x] [温度][c] 来自[zenodo.org][8]
 
-    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5111989.svg)](https://doi.org/10.5281/zenodo.5111989)
-
 * [x] [风速][e] 来自[国家青藏高原科学数据中心][5]
 * [x] [土地利用][I] 来自[30 m annual land cover and its dynamics in China from 1990 to 2019][8]
-
-    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4417810.svg)](https://doi.org/10.5281/zenodo.4417810)
-
 
 * [x] [省级行政区边界][g] 来自来自[中国科学院资源环境科学与数据中心][2]
 * [x] [人口密度][d] 来自[worldpop.org][4]
 * [x] [GDP密度][h] 来自[全球变化科学研究数据出版系统][7]
 * [x] [河流分布][f] 来自[全国地理信息资源目录服务系统][6]
-* [ ] 洪水频率
 
 
 [1]:<https://www.gscloud.cn/sources/accessdata/305?pid=302>
