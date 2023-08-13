@@ -59,8 +59,9 @@ def resample_pet_and_save(year:str)->None:
         month_frames = xr.concat(month_frames,dim="time",data_vars=["band_data"])
         month_frames_max_prod=month_frames.max(dim="time")*len(filename_map[month])
         # resampling
-        month_frames_max_resampled = month_frames_max_prod.rio.reproject(month_frames_max_prod.rio.crs,shape=(960,840),resampling=rio.enums.Resampling.bilinear)
-
+        month_frames_max_resampled = month_frames_max_prod.rio.reproject(month_frames_max_prod.rio.crs,shape=(1800,1560),resampling=rio.enums.Resampling.bilinear)
+        month_frames_max_resampled.rio.write_crs("EPSG:4326",inplace=True)
+        month_frames_max_resampled.rio.write_coordinate_system(inplace=True)
         month_frames_max_resampled.to_netcdf(os.path.join(output_path,year+"_"+str(month).zfill(2)+".nc"))
         print("Month: ",month," done!")
 

@@ -3,6 +3,7 @@ import xarray as xr
 import os
 import multiprocessing as mp
 import rioxarray as rxr
+import shapely
 
 def cut_precip_and_save(file_path):
     print(file_path)
@@ -33,10 +34,10 @@ def cut_data(frame:xr.Dataset, border: gpd.GeoDataFrame):
     return frame.rio.clip(border.geometry, frame.rio.crs)
 
 border_frame = gpd.read_file('scripts/preProcessing/border.json')
-
 path_prefix = os.path.join("scripts","datas")
 path_postfix = os.path.join("extracted")
 data_types = ["PRECIP","POPULAR","GDP"]
+
 output_path = os.path.join("scripts","outputs")
 
 file_names = dict([])
