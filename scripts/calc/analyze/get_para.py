@@ -114,8 +114,6 @@ def samlmusmall(x, nmom=5):
     l5 = coefl5 * sum_xtrans / l2
 
     return [l1, l2, l3, l4, l5]
-
-def samlmusmall_cuda(x, nmom=5):
     try:
         x = torch.as_tensor(x, dtype=torch.float64)
         n = x.shape[0]
@@ -204,7 +202,6 @@ def samlmusmall_cuda(x, nmom=5):
     return [l1, l2, l3, l4, l5]
 
 def get_lm_paras(d_seq:np.array) -> np.array:
-    #lm_est = lm.lmom_ratios(d_seq,3)
     lm_est = torch.as_tensor(np.asarray(samlmusmall(d_seq,3)))
     kappa = (0.488138*lm_est[2]**1.70839)-(1.7631*lm_est[2]**0.981824)+0.285706
     alpha = (1.023602813*lm_est[2]**1.8850974-2.95087636*lm_est[2]**1.195591244+1.759614982)*lm_est[1]
