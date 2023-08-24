@@ -1,11 +1,12 @@
 import numpy as np
 import scipy as sp
-import matplotlib.pyplot as plt
 import torch
 import xarray as xr
 import os
+from numba_stats import norm
 
 
+# Use GPU if available
 if torch.cuda.is_available():
     torch.set_default_device('cuda')
 else:
@@ -26,8 +27,7 @@ def read_pet():
         data_frame_list.append(xr.open_dataset(os.path.join("scripts","outputs","PET",i),decode_coords="all").to_array())
     return np.concatenate(data_frame_list,axis=0)
 
-
-def samlmusmall(x, nmom=5):
+def get_lmoments(x, nmom=5):
     try:
         x = np.asarray(x, dtype=np.float64)
         n = x.shape[0]
@@ -201,19 +201,56 @@ def samlmusmall(x, nmom=5):
 
     return [l1, l2, l3, l4, l5]
 
-def get_lm_paras(d_seq:np.array) -> np.array:
-    lm_est = torch.as_tensor(np.asarray(samlmusmall(d_seq,3)))
+def get_gev_lm_paras(d_seq:np.array) -> np.array:
+    # Calculate the L-moments of the data
+    lm_est = torch.as_tensor(np.asarray(get_lmoments(d_seq,3)))
+    # Calculate the parameters of the GEV distribution
     kappa = (0.488138*lm_est[2]**1.70839)-(1.7631*lm_est[2]**0.981824)+0.285706
     alpha = (1.023602813*lm_est[2]**1.8850974-2.95087636*lm_est[2]**1.195591244+1.759614982)*lm_est[1]
     zeta = (-0.0937*lm_est[2]**4-0.2198*lm_est[2]**3+1.407*lm_est[2]**2-1.4825*lm_est[2]-0.6205)*lm_est[1]+lm_est[0]
     return np.asarray([kappa.cpu().numpy(),zeta.cpu().numpy(),alpha.cpu().numpy()])
 
+def gev_cdf(x, c, loc=0, scale=1):
+    # Use the general formula
+    z = 1 - c * (x - loc) / scale
+    return np.exp(-z ** (1 / c))
 
+# Protect the main function
 if __name__ == '__main__':
     pre_frame = read_precip()[0:192,:,:]*0.1
     pet_frame = read_pet()
-    d_frame=np.float64(pre_frame-pet_frame)
+    d_frame_1=np.float64(pre_frame-pet_frame)
     print("Data loaded")
-    para_mat = get_lm_paras(d_frame)
+    # Evaluate the gev distribution's parameters with L-moments
+    para_mat = get_gev_lm_paras(d_frame_1)
+    print("Parameters calculated")
+    # Calculate the probability
+    prob_mat = gev_cdf(d_frame_1,para_mat[0],para_mat[1],para_mat[2])
+    print("Probability calculated")
+    # Use the inverse of the standard normal distribution
+    # Use the numba_stats package to speed up
+    spei_mat = norm.ppf(prob_mat,loc=0,scale=1)
+    print("SPEI calculated")
 
-    np.save("scripts/outputs/para_mat.npy",para_mat)
+    # Use this daraset's metadata to create a new dataset
+    ref_dataset = xr.open_dataset("scripts/outputs/PET/2000_01.nc",decode_coords="all")
+    month = np.array([i for i in range(1,193)])
+    latArr = sorted(ref_dataset.coords['y'])
+    lonArr = sorted(ref_dataset.coords['x'])
+    # Create a new dataset of SPEI
+    spei_frame = xr.Dataset(
+    data_vars = {
+        'spei':(['month','y','x'],spei_mat)
+    },
+    coords={
+        'x': (['x'], lonArr),
+        'y': (['y'], latArr),
+        'month':month
+    }
+    )
+    # Write coordinate system
+    spei_frame.rio.write_crs(4326, inplace=True).rio.set_spatial_dims(x_dim="x",y_dim="y",inplace=True).rio.write_coordinate_system(inplace=True)
+    # Save the dataset
+    spei_frame.to_netcdf("scripts/outputs/SPEI/spei.nc")
+    print("SPEI saved")
+    input("Press Any key to continue...")
