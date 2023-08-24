@@ -4,7 +4,6 @@ import torch
 import xarray as xr
 import os
 from numba_stats import norm
-import numba as nb
 
 def read_precip():
     data_frame_list = []
@@ -133,7 +132,7 @@ def gev_cdf(x:np.array, c:np.array, loc:np.array, scale:np.array)-> np.array:
 if __name__ == '__main__':
     pre_frame = read_precip()[0:192,:,:]*0.1
     pet_frame = read_pet()
-    d_frame_1=np.float64(pre_frame-pet_frame)
+    d_frame_1=pre_frame-pet_frame
     print("Data loaded")
     # Calulate the L-moments
     lm_est = get_lmoments(d_frame_1,3)
@@ -153,6 +152,8 @@ if __name__ == '__main__':
     month = np.array([i for i in range(1,193)])
     latArr = sorted(ref_dataset.coords['y'])
     lonArr = sorted(ref_dataset.coords['x'])
+    # Reverse the longitude
+    spei_mat = np.flip(spei_mat,axis=1)
     # Create a new dataset of SPEI
     spei_frame = xr.Dataset(
     data_vars = {
