@@ -4,7 +4,7 @@ all:
 	unzipRes
 
 installReq:
-	pip3 install -r ./scripts/requirements.txt
+	conda env create -f ./environment.yml -n gis
 
 downloadRes:
 	python3 ./scripts/downloadFile.py
