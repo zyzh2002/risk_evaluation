@@ -1,11 +1,13 @@
+from typing import Any
 import numpy as np
 import scipy as sp
 import torch
 import xarray as xr
 import os
 from numba_stats import norm
+import numpy.typing as npt
 
-def read_precip():
+def read_precip() -> np.ndarray:
     data_frame_list = []
     for i in os.listdir(os.path.join("scripts/outputs/PRECIP")):
         filename  = os.path.join("scripts/outputs/PRECIP",i)
@@ -13,13 +15,13 @@ def read_precip():
         data_frame_list.append(data_frame)
     return np.concatenate(data_frame_list,axis=0)
 
-def read_pet():
+def read_pet() -> np.ndarray:
     data_frame_list = []
     for i in os.listdir(os.path.join("scripts","outputs","PET")):
         data_frame_list.append(xr.open_dataset(os.path.join("scripts","outputs","PET",i),decode_coords="all").to_array())
     return np.concatenate(data_frame_list,axis=0)
 
-def get_lmoments(x, nmom=5) -> np.array:
+def get_lmoments(x, nmom=5) -> np.ndarray:
     try:
         x = np.asarray(x, dtype=np.float64)
         n = x.shape[0]
@@ -107,23 +109,23 @@ def get_lmoments(x, nmom=5) -> np.array:
 
     return np.array([l1, l2, l3, l4, l5])
 
-def get_gev_lm_paras(lm_est:np.array) -> np.array:
+def get_gev_lm_paras(lm_est:np.ndarray) -> np.ndarray:
     kappa = (0.488138*lm_est[2]**1.70839)-(1.7631*lm_est[2]**0.981824)+0.285706
     alpha = (1.023602813*lm_est[2]**1.8850974-2.95087636*lm_est[2]**1.195591244+1.759614982)*lm_est[1]
     zeta = (-0.0937*lm_est[2]**4-0.2198*lm_est[2]**3+1.407*lm_est[2]**2-1.4825*lm_est[2]-0.6205)*lm_est[1]+lm_est[0]
     return np.array([kappa,zeta,alpha])
 
 
-def gev_cdf(x:np.array, c:np.array, loc:np.array, scale:np.array)-> np.array:
+def gev_cdf(x:npt.ArrayLike, c:npt.ArrayLike, loc:npt.ArrayLike, scale:npt.ArrayLike)-> np.ndarray:
     if torch.cuda.is_available():
         torch.set_default_device('cuda')
     else:
         torch.set_default_device('cpu')
     # This function is designed for GPU
-    x = torch.from_numpy(x)
-    c = torch.from_numpy(c)
-    loc = torch.from_numpy(loc)
-    scale = torch.from_numpy(scale)
+    x = torch.tensor(x)
+    c = torch.tensor(c)
+    loc = torch.tensor(loc)
+    scale = torch.tensor(scale)
     # Use the general formula
     z = 1 - c * (x - loc) / scale
     return torch.exp(-z ** (1 / c)).cpu().numpy()
@@ -144,7 +146,7 @@ if __name__ == '__main__':
     print("Probability calculated")
     # Use the inverse of the standard normal distribution
     # Use the numba_stats package to speed up
-    spei_mat = norm.ppf(prob_mat,loc=0,scale=1)
+    spei_mat = norm.ppf(prob_mat,loc=0,scale=1) # type: ignore
     print("SPEI calculated")
 
     # Use this daraset's metadata to create a new dataset

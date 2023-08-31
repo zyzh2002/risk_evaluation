@@ -30,13 +30,20 @@ def cut_gdp_and_save(file_path):
     frame = cut_data(frame,border)
     frame.to_netcdf(os.path.join(output_path,"GDP",os.path.basename(file_path)[:-4]+".nc"))
 
+def cut_clcd_and_save(file_path):
+    print(file_path)
+    border = border_frame
+    frame = rxr.open_rasterio(file_path,masked=True)
+    frame = frame.rio.clip(border.geometry, frame.rio.crs,from_disk=True).squeeze("band",drop=True)
+    frame.to_netcdf(os.path.join(output_path,"CLCD",os.path.basename(file_path)[:-4]+".nc"))
+
 def cut_data(frame:xr.Dataset, border: gpd.GeoDataFrame):
     return frame.rio.clip(border.geometry, frame.rio.crs)
 
 border_frame = gpd.read_file('scripts/preProcessing/border.json')
 path_prefix = os.path.join("scripts","datas")
 path_postfix = os.path.join("extracted")
-data_types = ["PRECIP","POPULAR","GDP"]
+data_types = ["PRECIP","POPULAR","GDP","CLCD"]
 
 output_path = os.path.join("scripts","outputs")
 
@@ -56,3 +63,7 @@ if __name__ == "__main__":
     pool.map(cut_precip_and_save,file_names["PRECIP"])
     pool.map(cut_popular_and_save,file_names["POPULAR"])
     pool.map(cut_gdp_and_save,gdp_path)
+    cut_clcd_and_save("scripts/datas/CLCD/extracted/CLCD_v01_2015.tif")
+
+    pool.close()
+    pool.join()
