@@ -29,6 +29,8 @@ dependencies:
   - geopandas
   - rioxarray
   - numba-stats
+  - intel-cmplr-lib-rt
+  - tbb
   - pip:
     - climate-indices
     - pylance
