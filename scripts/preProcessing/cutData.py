@@ -59,11 +59,11 @@ for data_type in data_types:
 gdp_path = [os.path.join("scripts/datas/GDP/extracted/GDPGrid_China2005/cngdp2005.tif"),os.path.join("scripts/datas/GDP/extracted/GDPGrid_China2010/cngdp2010.tif")]
 
 if __name__ == "__main__":
-    pool = mp.Pool(os.cpu_count())
-    pool.map(cut_precip_and_save,file_names["PRECIP"])
-    pool.map(cut_popular_and_save,file_names["POPULAR"])
-    pool.map(cut_gdp_and_save,gdp_path)
-    cut_clcd_and_save("scripts/datas/CLCD/extracted/CLCD_v01_2015.tif")
+    pool = mp.Pool(2)
+    #pool.map(cut_precip_and_save,file_names["PRECIP"])
+    #pool.map(cut_popular_and_save,file_names["POPULAR"])
+    #pool.map(cut_gdp_and_save,gdp_path)
+    pool.map(cut_clcd_and_save,file_names["CLCD"])
 
     pool.close()
     pool.join()
