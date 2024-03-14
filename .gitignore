@@ -1,5 +1,11 @@
 scripts/datas/*
 scripts/outputs/*
+*.nc
+*.7z
+*.xml
+*.zip
+.vs/*
+.idea/*
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

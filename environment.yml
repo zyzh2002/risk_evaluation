@@ -2,11 +2,10 @@ name: gis
 channels:
   - conda-forge
   - defaults
-  - pytorch
-  - nvidia
 dependencies:
   - python=3.10
-  - pip=23.2.1
+  - pip
+  - cupy
   - mamba
   - numpy
   - scipy
@@ -22,15 +21,12 @@ dependencies:
   - opencv
   - lmoments3
   - ipykernel
-  - pytorch::pytorch
-  - pytorch::torchvision
-  - pytorch::torchaudio
-  - pytorch::pytorch-cuda=11.8
   - geopandas
   - rioxarray
   - numba-stats
   - intel-cmplr-lib-rt
   - tbb
+  - ipykernel
   - pip:
     - climate-indices
     - pylance
